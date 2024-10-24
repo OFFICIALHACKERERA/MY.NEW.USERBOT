@@ -1,4 +1,3 @@
-
 import asyncio
 import random
 import os
@@ -9,15 +8,14 @@ from telethon import TelegramClient, events, functions, Button, version
 from telethon.sessions import StringSession
 from telethon.errors import ChatAdminRequiredError, UserNotParticipantError
 
-
 # Replace these with your actual config details
 APP_ID = int(os.environ.get("APP_ID", 22030138))
 API_HASH = os.environ.get("API_HASH", "c6c02e51a03f6b03dba9ad9a826dc2f1")
 
 # Define string sessions
 LEGEND_STRINGS = [
-    os.environ.get("LEGEND_STRING_1", "1BVtsOJkBu6zMqekR3w3geIAq7TiyjJ2hC7rExNw6_DmaXoJwi20BJVabpCvDVbGq8AN8YU75CPzAype5HMd0shjj_wvO_3aENCY51kb9Jw9uEn0bBUfgo4oK_vQf7uqt5jJ7e_huFgfIPArA-SDIItAP2wc5wS6QV4lj-rjnyxtF8XZHayh4NrAwdhleoAoZZyjHyhTHO1g4tj5xqUii1_1BuZI40yRwV_wgWw2cpnJaVgCCNJAPQ8vihT_COQYN4KCZXr_Z2cZhVI0Il8G2yPzFPoYR_R-oxkYqX4xgkIzHHIoHU_NSNC8GPAf8rVil_vmovcRESZ8U4QPM8CJFEytavDfV9Gc="),
-    os.environ.get("LEGEND_STRING_2", "1BVtsOGcBuzTNIJm8ak4Xnl7FDovlhgUxbOZIjVse38Vs--WWe2J0OXnfLL63Z0GQiyZX1xx6DnwcrqaR_dslw4vqXt6gZtt2hdgChIbD2eDoAbJcHZNKUSGFGFAcv9BeuiCZd-fTZOCmDP41EWpuhn5EpKbNr3DY9mw9dtSoEvqYqxp8XGQCIko3B-Tr63aMNf0PVDArZcDmyAuDrY0C0rc-I5-m9_n8MbWT78vg6ANB2nWP95yQorqruf9BPiFJF8t36_qhyE0TXO58Y2O93D3JQV-UMIUqJDVPy1ABWqrqae54mfbhHeBOgJTb3tGfS16nq3ygwxMEbIJ2GAduDVfvEdaNXio=")
+    os.environ.get("LEGEND_STRING_1", "your_string_1"),
+    os.environ.get("LEGEND_STRING_2", "your_string_2")
 ]
 
 BOT_USERNAME = os.environ.get("BOT_USERNAME", "@YourBotUsername")
@@ -33,10 +31,8 @@ legends = [
 ]
 
 IPIC = "https://telegra.ph/file/6bb3994d5789d8e7f2c99.mp4"
-
 RAID = ["hello ", "hii "]
-
-active_raids = {}  # Dictionary to hold active raids {chat_id: [user_id1, user_id2, ...]}
+active_raids = {}
 
 def get_readable_time(seconds):
     return str(timedelta(seconds=seconds))
@@ -49,8 +45,8 @@ async def handle_alive_command(event):
         return
 
     uptime = get_readable_time(time.time() - StartTime)
-    emoji = random.choice(["✥", "✔️", "⭐", "✨", "☣️", "🔰", "🏴", "‍☠️" ,"🚀"])  
-    my = random.choice(["🇦🇱", "💠", "🔷","🔹"])  
+    emoji = random.choice(["✥", "✔️", "⭐", "✨", "☣️", "🔰", "🏴", "‍☠️" ,"🚀"])
+    my = random.choice(["🇦🇱", "💠", "🔷", "🔹"])
 
     legend_caption = (
     f"**─────────────────**\n"
@@ -62,7 +58,7 @@ async def handle_alive_command(event):
     f"**┣{emoji} Python Version :** `{python_version()}`\n"
     f"**┣{emoji} Uptime :** {uptime}\n"
     f"**┣{emoji} Master:** {mention}\n"
-      f"╰─────────────────\n")
+    f"╰─────────────────\n")
 
     buttons = [[Button.url("Repo", "https://github.com/ITS-LEGENDBOT/LEGENDBOT")]]
 
@@ -152,8 +148,8 @@ async def register_handlers(legend):
         chat_id = event.chat_id
 
         if chat_id in active_raids and user_id in active_raids[chat_id]:
-            active_raids[chat_id].remove(user_id)  # Remove the user from active raids
-            if not active_raids[chat_id]:  # If the list is empty, remove the chat_id key
+            active_raids[chat_id].remove(user_id)
+            if not active_raids[chat_id]:
                 del active_raids[chat_id]
             await event.reply("Raid has been stopped for the user.")
         else:
@@ -210,11 +206,5 @@ async def main():
     await asyncio.gather(*[legend.run_until_disconnected() for legend in legends])
 
 # Colab mein run karne ke liye
-await main()
-
-
-# ... (aapka pehle ka code)
-
-# Main execution
 if __name__ == "__main__":
     asyncio.run(main())
