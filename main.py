@@ -7,32 +7,14 @@ from platform import python_version
 from telethon import TelegramClient, events, functions, Button, version
 from telethon.sessions import StringSession
 from telethon.errors import ChatAdminRequiredError, UserNotParticipantError
+from config import APP_ID, API_HASH, LEGEND_STRINGS, BOT_USERNAME, ALLOWED_USER_ID  # Import from config
 
-# Replace these with your actual config details
-APP_ID = int(os.environ.get("APP_ID", 22030138))
-API_HASH = os.environ.get("API_HASH", "c6c02e51a03f6b03dba9ad9a826dc2f1")
-
-# Define string sessions
-LEGEND_STRINGS = [
-    os.environ.get("LEGEND_STRING_1", "1BVtsOJkBu6zMqekR3w3geIAq7TiyjJ2hC7rExNw6_DmaXoJwi20BJVabpCvDVbGq8AN8YU75CPzAype5HMd0shjj_wvO_3aENCY51kb9Jw9uEn0bBUfgo4oK_vQf7uqt5jJ7e_huFgfIPArA-SDIItAP2wc5wS6QV4lj-rjnyxtF8XZHayh4NrAwdhleoAoZZyjHyhTHO1g4tj5xqUii1_1BuZI40yRwV_wgWw2cpnJaVgCCNJAPQ8vihT_COQYN4KCZXr_Z2cZhVI0Il8G2yPzFPoYR_R-oxkYqX4xgkIzHHIoHU_NSNC8GPAf8rVil_vmovcRESZ8U4QPM8CJFEytavDfV9Gc="),
-    os.environ.get("LEGEND_STRING_2", "1BVtsOGcBuzTNIJm8ak4Xnl7FDovlhgUxbOZIjVse38Vs--WWe2J0OXnfLL63Z0GQiyZX1xx6DnwcrqaR_dslw4vqXt6gZtt2hdgChIbD2eDoAbJcHZNKUSGFGFAcv9BeuiCZd-fTZOCmDP41EWpuhn5EpKbNr3DY9mw9dtSoEvqYqxp8XGQCIko3B-Tr63aMNf0PVDArZcDmyAuDrY0C0rc-I5-m9_n8MbWT78vg6ANB2nWP95yQorqruf9BPiFJF8t36_qhyE0TXO58Y2O93D3JQV-UMIUqJDVPy1ABWqrqae54mfbhHeBOgJTb3tGfS16nq3ygwxMEbIJ2GAduDVfvEdaNXio=")
-]
-
-BOT_USERNAME = os.environ.get("BOT_USERNAME", "@YourBotUsername")
-ALLOWED_USER_ID = 6508157803  # Replace with your actual user ID
-mention = "@raoxc"
-legendversion = "1.0"
-StartTime = time.time()
-
-# Create a list of Telegram clients for each session
-legends = [
-    TelegramClient(StringSession(session), api_id=APP_ID, api_hash=API_HASH, auto_reconnect=True)
-    for session in LEGEND_STRINGS
-]
-
+# Constants
 IPIC = "https://telegra.ph/file/6bb3994d5789d8e7f2c99.mp4"
 RAID = ["hello ", "hii "]
 active_raids = {}
+StartTime = time.time()
+legendversion = "1.0"
 
 def get_readable_time(seconds):
     return str(timedelta(seconds=seconds))
@@ -57,7 +39,7 @@ async def handle_alive_command(event):
     f"**┣{emoji} Userbot Version :** `{legendversion}`\n"
     f"**┣{emoji} Python Version :** `{python_version()}`\n"
     f"**┣{emoji} Uptime :** {uptime}\n"
-    f"**┣{emoji} Master:** {mention}\n"
+    f"**┣{emoji} Master:** @{BOT_USERNAME}\n"
     f"╰─────────────────\n")
 
     buttons = [[Button.url("Repo", "https://github.com/ITS-LEGENDBOT/LEGENDBOT")]]
@@ -201,6 +183,10 @@ async def register_handlers(legend):
 
 # Main execution
 async def main():
+    legends = [
+        TelegramClient(StringSession(session), api_id=APP_ID, api_hash=API_HASH, auto_reconnect=True)
+        for session in LEGEND_STRINGS
+    ]
     await asyncio.gather(*[register_handlers(legend) for legend in legends])
     await asyncio.gather(*[legend.start() for legend in legends])
     await asyncio.gather(*[legend.run_until_disconnected() for legend in legends])
