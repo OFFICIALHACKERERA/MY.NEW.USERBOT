@@ -16,11 +16,7 @@ API_TOKENS = [
     '6942028585:AAEoK0JpC187XRYEiwJX4dx688jcBcoT5y4',
     '7430127221:AAG3qOqe3j9SbYFvhbWGS7Y_ACprqopOEU8',
     '7352686451:AAEmwKY9dbEBr5tf5b_NyJhN8oskFqzylYM',
-    
-
-    
 ]
-
 
 # Initialize bots
 bots = [telebot.TeleBot(token) for token in API_TOKENS]
@@ -50,7 +46,7 @@ def send_starting_message(bot):
     button1 = InlineKeyboardButton("Contact Us", url=f"https://t.me/{USERNAME}")
     button2 = InlineKeyboardButton("Join Our Group", url=GROUP_LINK)
     markup.add(button1, button2)
-    
+
     try:
         bot.send_photo(CHAT_ID, photo=photo_url, caption="Click one of the buttons below for more info:", reply_markup=markup)
         print("Starting message sent successfully.")
@@ -154,7 +150,7 @@ def handle_commands(bot, index):
 
 # Start the bot threads
 def setup_bot(bot, index):
-    handle_commands(bot)  # Set command handlers
+    handle_commands(bot, index)  # Set command handlers
     send_starting_message(bot)  # Send starting message
     bot.polling(none_stop=True)
 
