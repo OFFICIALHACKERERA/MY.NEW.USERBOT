@@ -211,3 +211,10 @@ async def main():
 
 # Colab mein run karne ke liye
 await main()
+
+
+# ... (aapka pehle ka code)
+
+# Main execution
+if __name__ == "__main__":
+    asyncio.run(main())
