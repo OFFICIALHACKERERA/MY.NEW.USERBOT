@@ -1,3 +1,24 @@
+import os
+
+# Telegram API configuration
+APP_ID = int(os.environ.get("APP_ID", 22030138))
+API_HASH = os.environ.get("API_HASH", "c6c02e51a03f6b03dba9ad9a826dc2f1")
+
+# Define string sessions
+LEGEND_STRINGS = [
+    os.environ.get("LEGEND_STRING_1", "your_first_session_string"),
+    os.environ.get("LEGEND_STRING_2", "your_second_session_string")
+]
+
+BOT_USERNAME = os.environ.get("BOT_USERNAME", "@YourBotUsername")
+ALLOWED_USER_ID = 6508157803  # Replace with your actual user ID
+
+
+
+
+
+
+
 API_TOKENS = [
     '7274292874:AAE95eVX0BE3LyECLELa7VE5_oA9JXJMDzM',
     '7513832134:AAH-J3ZxQojb_VdZNW-Xgw0PKBSB2wPX6tM',
