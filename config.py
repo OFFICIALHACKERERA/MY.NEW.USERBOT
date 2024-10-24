@@ -6,8 +6,8 @@ API_HASH = os.environ.get("API_HASH", "c6c02e51a03f6b03dba9ad9a826dc2f1")
 
 # Define string sessions
 LEGEND_STRINGS = [
-    os.environ.get("LEGEND_STRING_1", "your_first_session_string"),
-    os.environ.get("LEGEND_STRING_2", "your_second_session_string")
+    os.environ.get("LEGEND_STRING_1", "1BVtsOJkBu6zMqekR3w3geIAq7TiyjJ2hC7rExNw6_DmaXoJwi20BJVabpCvDVbGq8AN8YU75CPzAype5HMd0shjj_wvO_3aENCY51kb9Jw9uEn0bBUfgo4oK_vQf7uqt5jJ7e_huFgfIPArA-SDIItAP2wc5wS6QV4lj-rjnyxtF8XZHayh4NrAwdhleoAoZZyjHyhTHO1g4tj5xqUii1_1BuZI40yRwV_wgWw2cpnJaVgCCNJAPQ8vihT_COQYN4KCZXr_Z2cZhVI0Il8G2yPzFPoYR_R-oxkYqX4xgkIzHHIoHU_NSNC8GPAf8rVil_vmovcRESZ8U4QPM8CJFEytavDfV9Gc="),
+    os.environ.get("LEGEND_STRING_2", "1BVtsOJkBu6zMqekR3w3geIAq7TiyjJ2hC7rExNw6_DmaXoJwi20BJVabpCvDVbGq8AN8YU75CPzAype5HMd0shjj_wvO_3aENCY51kb9Jw9uEn0bBUfgo4oK_vQf7uqt5jJ7e_huFgfIPArA-SDIItAP2wc5wS6QV4lj-rjnyxtF8XZHayh4NrAwdhleoAoZZyjHyhTHO1g4tj5xqUii1_1BuZI40yRwV_wgWw2cpnJaVgCCNJAPQ8vihT_COQYN4KCZXr_Z2cZhVI0Il8G2yPzFPoYR_R-oxkYqX4xgkIzHHIoHU_NSNC8GPAf8rVil_vmovcRESZ8U4QPM8CJFEytavDfV9Gc=")
 ]
 
 BOT_USERNAME = os.environ.get("BOT_USERNAME", "@YourBotUsername")
